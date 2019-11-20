@@ -1,0 +1,74 @@
+﻿@model STD_Course_Management.ViewModels.CourseRegistered
+
+    <h1>Course List</h1>
+
+    <p>
+        <a class="btn btn-outline-info" asp-action="Create">Create New</a>
+        <a class="btn btn-outline-info" asp-action="RegCourse">Course Registration</a>
+        <a class="btn btn-outline-info" asp-action="Selected_Course">Selected Course</a>
+    </p>
+    <form method="post">
+        @if (Model.Courses.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Course Code
+                        </th>
+                        <th>
+                            Course Name
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                        <th>
+                            Department
+                        </th>
+                        <th>
+                            Semester
+                        </th>
+                        <th>
+                            Teacher
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Courses)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course_code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Credit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dept.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Semester.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Teacher.Name)
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-danger" asp-controller="RegisterdCourse" asp-action="Remove" asp-route-id="@item.Id"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="col-md-3">
+                <input asp-for="@Model.CourseConfirm.Std_Id" class="form-control" />
+
+            </div>
+
+            <button type="submit" id="btnPlaceOrder" class="btn btn-success">Confirm Regitration</button>
+
+        }
+    </form>

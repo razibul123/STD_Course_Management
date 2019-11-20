@@ -1,0 +1,19 @@
+﻿@model STD_Course_Management.ViewModels.CourseRegistered
+@{
+    ViewData["Title"] = "CourseConfirmation";
+}
+
+<h1>CourseConfirmation</h1>
+
+<br />
+<h2 class="text-info">Registration Confirmation</h2>
+<div class="form-text">
+    Your registration has been submitted.
+</div>
+<br />
+
+<partial name="~/Views/Shared/_StdCourseRegisterd.cshtml" model="Model.CourseConfirm" />
+<br />
+<partial name="~/Views/Shared/_CourseConfirm.cshtml" model="Model.Courses" />
+<a asp-controller="Courses" asp-action="Index" class="btn btn-success"> Back to Course</a>
+
